@@ -17,6 +17,11 @@ class ClipBoard:
             #clipboard.CloseClipboard()
             data = ImageGrab.grabclipboard()
             return 'BITMAP', data
+        if win32clipboard.IsClipboardFormatAvailable(win32con.CF_UNICODETEXT):
+            win32clipboard.OpenClipboard()
+            data = win32clipboard.GetClipboardData(win32con.CF_UNICODETEXT)
+            win32clipboard.CloseClipboard()
+            return 'UNICODE', data
         if win32clipboard.IsClipboardFormatAvailable(win32con.CF_TEXT):
             win32clipboard.OpenClipboard()
             data = win32clipboard.GetClipboardData(win32con.CF_TEXT)

@@ -116,6 +116,13 @@ class Interface:
         win32gui.Shell_NotifyIcon(win32gui.NIM_DELETE, nid)
         win32gui.PostQuitMessage(0)
 
+    def HideWindow(self):
+        ConsoleWindow=ctypes.windll.kernel32.GetConsoleWindow()
+        if ConsoleWindow!=0:
+            ctypes.windll.user32.ShowWindow(ConsoleWindow,0)
+            ctypes.windll.kernel32.CloseHandle(ConsoleWindow)
+        self.ShowBalloon('Notice','Console window hided')
+
     def ShowBalloon(self, title, msg):
         NIF_INFO = 16
         NIIF_INFO = 1

@@ -8,10 +8,10 @@ except:
     print 'FAULT - in AfterCopy.main_import.'
     raise NecessaryLibraryNotFound('clipboard')
 
-try:
+if 1:
     interface = __import__('interface.'+platform.system())
     interface = eval('interface.'+platform.system())
-except:
+else:#except:
     print 'FAULT - in AfterCopy.main_import.'
     raise NecessaryLibraryNotFound('interface')
 
